@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="<u></u>tf-10">
+    <title>Campbell Hawkes | Winter</title>
+    <link href='http://fonts.googleapis.com/css?family=Arimo:400italic,400,700italic,700|Josefin+Sans' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'normalize', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+        <%= link_to_unless_current "Campbell Hawkes",
+          root_path, id: "head-link" do |label|
+            content_tag(:span, label, id: "head-link")
+          end
+        %>
+
+         </h1>
+          <h2>Athlete and Creator of Things</h2>
+        </a>
+    </header>
+    <div id="navpanel">
+      <nav>
+        <ul>
+        <li> 
+          <p><%= link_to_unless_current "Previous_Work", root_path do 
+            |label| content_tag(:span,label,class: "current")
+            end %></p> 
+        </li>
+        <li> <p> <%= link_to_unless_current "Who_am_I?", about_path do 
+          |label| content_tag(:span,label,class: "current")
+          end %> </p>
+        </li>
+        <li> <p><%= link_to_unless_current "Contact_Me", contact_path do
+        |label| content_tag(:span,label,class: "current")
+        end %> </p></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <% if flash.alert %>
+          <div class="messages">
+            <div class="alert alert-danger" role="alert">
+              <%= flash.alert %>
+            </div>
+          </div>
+        <% end %>
+
+      <% if flash.notice %>
+        <div class="messages">
+          <div class="alert alert-success" role="alert">
+            <%= flash.notice %>
+          </div>
+        </div>
+      <% end %>
+
+    <%= yield %>
+    
+    <footer>
+      <box id="linebreak">
+      </box>
+      <div class="footer-elements">
+          <a alt="Link to Campbell's Facebook Profile" class="social_links" href="http://www.facebook.com/campbell.hawkes"><%= image_tag "facebook-small.png" %></a>
+          <p> &copy; 2015 - Campbell Hawkes.</p>
+      </div>
+    </footer>
+  </body>
+</html>
